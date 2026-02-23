@@ -259,6 +259,7 @@
           "enum": [
             "none",
             "developer",
+            "maintainer",
             "all"
           ]
         },
@@ -1193,6 +1194,22 @@
                 }
               ]
             },
+            "gitlab_secrets_manager": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "Source of the secret. Defaults to the current project if not given. For fetching a secret from a group, provide group/<full_path_of_the_group>"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            },
             "file": {
               "type": "boolean",
               "default": true,
@@ -1222,6 +1239,11 @@
             {
               "required": [
                 "aws_secrets_manager"
+              ]
+            },
+            {
+              "required": [
+                "gitlab_secrets_manager"
               ]
             }
           ],
